@@ -11,10 +11,15 @@
             Name = name;
             XP = xp;
         }
-        public int AddXP(int amount)
+        public void AddXP(int amount)
         {
             XP += amount;
-            return XP;
+        }
+        public int Level
+        {
+           
+            get { return XP / 100 + 1; }
+
         }
     }
 }

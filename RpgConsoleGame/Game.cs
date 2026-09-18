@@ -1,5 +1,4 @@
 ﻿using RpgConsoleGame;
-var chop = "chop";
 var woodCutting = "WoodCutting";
 var chosenSkill = chooseSkill();
 
@@ -21,22 +20,32 @@ string chooseSkill()
 
 void trainingSkill(Skill p)
 {
-
+    var chop = "chop";
 
     while (chop == "chop")
     {
         Console.WriteLine("WoodCutting. Write 'chop' to level up the skill.");
         chop = Console.ReadLine();
-
+        
+        
         if ( chop == "chop") {
-              p.AddXP(1);
+            int previousLevel = p.Level;
+            int woodCuttingBaseEXP = 50;
+            p.AddXP(woodCuttingBaseEXP);
+            int currentLevel = p.Level;
 
             Console.WriteLine("______________");
             Console.WriteLine("Skill: " + p.Name);
             Console.WriteLine("Exp: " + p.XP);
             Console.WriteLine("______________");
             Console.WriteLine("");
-            Console.WriteLine("1 exp. Keep going!");
+            if (previousLevel != currentLevel)
+            {
+                Console.WriteLine("Level up!");
+                
+                Console.WriteLine("You leveled up " + previousLevel + " --> " + currentLevel);
+            }
+            Console.WriteLine(woodCuttingBaseEXP + " exp. Keep going!");
             Console.WriteLine("");
         }
         else
@@ -50,8 +59,10 @@ void trainingSkill(Skill p)
 
 var p = new Skill(chosenSkill, 0);
 trainingSkill(p);
-p.AddXP(1);
-
-
+Console.WriteLine("______________");
+Console.WriteLine("Your WoodCutting skill Level: " + p.Level);
+Console.WriteLine("Skill: " + p.Name);
+Console.WriteLine("Exp: " + p.XP);
+Console.WriteLine("______________");
 
 Console.WriteLine("Cool");
