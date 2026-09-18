@@ -1,5 +1,14 @@
 ﻿using RpgConsoleGame;
+Dictionary <string, Skill > typeOfSkills = new();
 var woodCutting = "WoodCutting";
+
+typeOfSkills.Add("WoodCutting", new Skill("WoodCutting", 0));
+typeOfSkills.Add("Mining", new Skill("Mining", 0));
+foreach(var n in typeOfSkills)
+{
+    Console.WriteLine(n.Key + " lvl " + n.Value.Level);
+}
+
 var chosenSkill = chooseSkill();
 
 
